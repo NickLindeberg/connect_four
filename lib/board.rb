@@ -22,12 +22,4 @@ class Board
 
   end
 
-  def add_piece_player
-
-  end
-
-  def add_piece_computer
-
-  end
-
 end
