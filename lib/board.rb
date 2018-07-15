@@ -23,13 +23,13 @@ class Board
   end
 
   #Takes string and seperates into seperate lines.
-  def seperate_into_lines
+  def seperate_into_lines(string)
     string.scan(/......./).join("\n")
   end
 
   def print_board
-    
-
+    changed_board = change_array_to_string
+    seperate_into_lines(changed_board)
 
   end
 
