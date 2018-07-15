@@ -1,5 +1,8 @@
+require "./lib/board.rb"
+@board = Board.new
 
 
-class ConnectFour
+puts "\u2015 Welcome to Connect Four! Please choose a letter to start the game! \u2015"
 
-end
+
+puts @board.print_board

@@ -23,7 +23,7 @@ class BoardTest <Minitest::Test
     bd = Board.new
     expected = "ABCDEFG.........................................."
 
-    assert_equal expected, bd.print_board
+    assert_equal expected, bd.change_array_to_string
   end
 
   def test_if_default_board_is_printed_in_seperate_lines
