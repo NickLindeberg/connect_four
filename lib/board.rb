@@ -1,5 +1,8 @@
 class Board
-  attr_reader :board
+  attr_reader :board,
+              :change_array_to_string,
+              :seperate_into_lines,
+              :print_board
 
   def initialize
     @board = {
@@ -13,13 +16,22 @@ class Board
     }
   end
 
-  def print_board
+
+  #Joins the arrays for each row into one string
+  def change_array_to_string
     board.values.join
   end
 
-  def seperate_into_lines(string)
+  #Takes string and seperates into seperate lines.
+  def seperate_into_lines
     string.scan(/......./).join("\n")
+  end
+
+  def print_board
+    
+
 
   end
+
 
 end
