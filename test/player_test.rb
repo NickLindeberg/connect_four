@@ -1,6 +1,7 @@
 require "minitest/autorun"
 require "minitest/pride"
 require "./lib/player.rb"
+require "./lib/board.rb"
 
 class PlayerTest <Minitest::Test
 
@@ -29,8 +30,15 @@ class PlayerTest <Minitest::Test
   def test_if_incorrect_input_rejected
     play = Player.new
     expected = "Please choose one of the following letters ABCDEFG"
-    actual = play.player_move("Z")
+    actual = play.player_move("z")
 
     assert_equal expected, actual
   end
+
+  # def test_if_row_takes_input
+  #   play = Player.new
+  #
+  # end
+
+
 end

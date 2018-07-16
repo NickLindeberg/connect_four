@@ -30,8 +30,9 @@ class Board
   def print_board
     changed_board = change_array_to_string
     seperate_into_lines(changed_board)
-
   end
+
+  
 
 
 end
