@@ -2,7 +2,8 @@ require "./lib/board.rb"
 require 'pry'
 
 class Player
-  attr_reader :player_move
+  attr_reader :player_move,
+              :piece_drop
 
   def initialize
     @gameboard = Board.new
@@ -21,9 +22,14 @@ class Player
   end
 
   def piece_drop(number, access_index)
-    
+    unless number 0
+    if @gameboard.board[number][access_index] == "."
+     @gameboard.board[number][access_index] = "X"
+    else
+      piece_drop(number -1, access_index)
+    end
 
-
+  end 
+  break
   end
-
 end

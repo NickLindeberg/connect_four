@@ -44,16 +44,11 @@ class PlayerTest <Minitest::Test
   def test_if_game_piece_added
     play = Player.new
 
-    expected =  ["A","B","C","D","E","F","G"],
-                [".",".",".",".",".",".","."],
-                [".",".",".",".",".",".","."],
-                [".",".",".",".",".",".","."],
-                [".",".",".",".",".",".","."],
-                [".",".",".",".",".",".","."],
-                ["X",".",".",".",".",".","."]
+    expected = "X"
+    play.piece_drop(6,0)
+    play.piece_drop(6,0)
 
-    assert_equal expected, play.
+    assert_equal expected, play.piece_drop(6,0)
   end
-
 
 end
