@@ -35,10 +35,11 @@ class PlayerTest <Minitest::Test
     assert_equal expected, actual
   end
 
-  # def test_if_row_takes_input
-  #   play = Player.new
-  #
-  # end
+  def test_if_row_takes_input
+    play = Player.new
+
+    assert_equal ["X", ".", ".", ".", ".", ".", "."], play.add_move_to_board("A")
+  end
 
 
 end

@@ -1,3 +1,5 @@
+require "pry"
+
 class Board
   attr_reader :board,
               :change_array_to_string,
@@ -5,21 +7,21 @@ class Board
               :print_board
 
   def initialize
-    @board = {
-      "row_key"=> ["A","B","C","D","E","F","G"],
-      "row_1"  => [".",".",".",".",".",".","."],
-      "row_2"  => [".",".",".",".",".",".","."],
-      "row_3"  => [".",".",".",".",".",".","."],
-      "row_4"  => [".",".",".",".",".",".","."],
-      "row_5"  => [".",".",".",".",".",".","."],
-      "row_6"  => [".",".",".",".",".",".","."]
-    }
+    @board = [
+    ["A","B","C","D","E","F","G"],
+    [".",".",".",".",".",".","."],
+    [".",".",".",".",".",".","."],
+    [".",".",".",".",".",".","."],
+    [".",".",".",".",".",".","."],
+    [".",".",".",".",".",".","."],
+    [".",".",".",".",".",".","."]
+  ]
   end
 
 
   #Joins the arrays for each row into one string
   def change_array_to_string
-    board.values.join
+    board.join
   end
 
   #Takes string and seperates into seperate lines.
@@ -32,7 +34,7 @@ class Board
     seperate_into_lines(changed_board)
   end
 
-  
+
 
 
 end

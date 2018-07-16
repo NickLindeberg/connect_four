@@ -8,4 +8,4 @@ require './lib/player.rb'
 puts "\u2015 Welcome to Connect Four! Please choose a letter to start the game! \u2015"
 puts @board.print_board
 # gets = input
-p @player.player_move("A")
+puts @player.player_move("a")
