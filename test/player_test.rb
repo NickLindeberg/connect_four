@@ -13,7 +13,7 @@ class PlayerTest <Minitest::Test
 
   def test_if_player_can_choose_column
     play = Player.new
-    expected = "Thank You!"
+    expected = "\nThank You!"
     actual = play.player_move("B")
 
     assert_equal expected, actual
@@ -21,7 +21,7 @@ class PlayerTest <Minitest::Test
 
   def test_if_method_will_upcase_input
     play = Player.new
-    expected = "Thank You!"
+    expected = "\nThank You!"
     actual = play.player_move("a")
 
     assert_equal expected, actual
@@ -29,16 +29,30 @@ class PlayerTest <Minitest::Test
 
   def test_if_incorrect_input_rejected
     play = Player.new
-    expected = "Please choose one of the following letters ABCDEFG"
+    expected = "\nPlease choose one of the following letters ABCDEFG"
     actual = play.player_move("z")
 
     assert_equal expected, actual
   end
 
-  def test_if_row_takes_input
+  def test_if_index_accessible
     play = Player.new
 
-    assert_equal ["X", ".", ".", ".", ".", ".", "."], play.add_move_to_board("A")
+    assert_equal 0, play.access_index("A")
+  end
+
+  def test_if_game_piece_added
+    play = Player.new
+
+    expected =  ["A","B","C","D","E","F","G"],
+                [".",".",".",".",".",".","."],
+                [".",".",".",".",".",".","."],
+                [".",".",".",".",".",".","."],
+                [".",".",".",".",".",".","."],
+                [".",".",".",".",".",".","."],
+                ["X",".",".",".",".",".","."]
+
+    assert_equal expected, play.
   end
 
 
