@@ -15,8 +15,8 @@ class BoardTest <Minitest::Test
     bd = Board.new
     expected = [".",".",".",".",".",".","."]
 
-    assert_equal expected, bd.board["row_1"]
-    assert_equal expected, bd.board["row_6"]
+    assert_equal expected, bd.board[1]
+    assert_equal expected, bd.board[6]
   end
 
   def test_if_default_board_is_printed
