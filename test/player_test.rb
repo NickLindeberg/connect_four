@@ -44,11 +44,28 @@ class PlayerTest <Minitest::Test
   def test_if_game_piece_added
     play = Player.new
 
-    expected = "X"
-    play.piece_drop(6,0)
-    play.piece_drop(6,0)
-
+    expected = "ABCDEFG\n.......\n.......\n.......\n.......\n.......\nX......"
     assert_equal expected, play.piece_drop(6,0)
+  end
+
+  def test_if_additional_piece_can_be_added_same_row
+    play = Player.new
+
+    play.piece_drop(6,0)
+    expected = "ABCDEFG\n.......\n.......\n.......\n.......\n.......\nXX....."
+    assert_equal expected, play.piece_drop(6,1)
+  end
+
+  def test_if_pieces_can_stack
+    play = Player.new
+
+    play.piece_drop(6,0)
+    play.piece_drop(5,0)
+    play.piece_drop(4,0)
+    play.piece_drop(3,0)
+    play.piece_drop(2,0)
+    expected = "ABCDEFG\nX......\nX......\nX......\nX......\nX......\nX......"
+    assert_equal expected, play.piece_drop(1,0)
   end
 
 end
