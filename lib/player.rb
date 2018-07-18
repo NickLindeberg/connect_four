@@ -28,7 +28,7 @@ class Player
   def choose_column(letter)
     number = (6)
     chosen_column = player_move(letter)
-    row_column_chosen = piece_drop(6, chosen_column)
+    row_column_chosen = piece_drop(chosen_column)
   end
 
   def player_move(move)
@@ -45,13 +45,18 @@ class Player
   end
 
   def piece_drop(column)
-    if colum =
-      @gameboard.board[6][column] == "."
-      @gameboard.board[6].delete_at(column)
-      @gameboard.board[6].insert(column, "X")
-    else
-      puts "Sorry, column full!"
-    end
+      rows = [6,5,4,3,2,1]
+      rows.map do |row|
+        if  @gameboard.board[row][column] == "."
+          @gameboard.board[row].delete_at(column)
+          @gameboard.board[row].insert(column, "X")
+        elsif @gameboard.board[row -= 1][column] == "."
+          @gameboard.board[row -= 1].delete_at(column)
+          @gameboard.board[row -= 1].insert(column, "X")
+          break
+        end
+
+      end
     return @gameboard.print_board
   end
 
