@@ -12,8 +12,11 @@ class Player
     @turn = 0
   end
 
+  def get_input
+    gets
+  end
 
-  if turn is even?
+  # if turn is even?
     def piece_type
       if @turn == 0
         "X"
@@ -30,7 +33,7 @@ class Player
 
   def player_move(move)
     if ("A".."G").include?(move.upcase)
-      "\nThank You!"
+      # "\nThank You!"
       access_index(move.upcase)
     else
       "\nPlease choose one of the following letters ABCDEFG"
@@ -41,31 +44,11 @@ class Player
     @gameboard.board_grid[input]
   end
 
-  def piece_drop(number, column)
-    if @gameboard.board[6][column] == "."
+  def piece_drop(column)
+    if colum =
+      @gameboard.board[6][column] == "."
       @gameboard.board[6].delete_at(column)
       @gameboard.board[6].insert(column, "X")
-
-    elsif @gameboard.board[5][column] == "."
-      @gameboard.board[5].delete_at(column)
-      @gameboard.board[5].insert(column, "X")
-
-    elsif @gameboard.board[4][column] == "."
-      @gameboard.board[4].delete_at(column)
-      @gameboard.board[4].insert(column, "X")
-
-    elsif @gameboard.board[3][column] == "."
-      @gameboard.board[3].delete_at(column)
-      @gameboard.board[3].insert(column, "X")
-
-    elsif @gameboard.board[2][column] == "."
-      @gameboard.board[2].delete_at(column)
-      @gameboard.board[2].insert(column, "X")
-
-    elsif @gameboard.board[1][column] == "."
-      @gameboard.board[1].delete_at(column)
-      @gameboard.board[1].insert(column, "X")
-
     else
       puts "Sorry, column full!"
     end
