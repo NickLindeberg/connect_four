@@ -5,37 +5,37 @@ class Player
               :piece_drop,
               :gameboard,
               :choose_column,
-              :get_input
-
+              :get_input,
+              :piece
 
   def initialize
     @gameboard = Board.new
     @turn = 0
+    @piece = "O"
+
   end
 
-  def get_input
-    letter = gets.chomp
-    player(letter)
-  end
-
-  # if turn is even?
-    def piece_type
-      if @turn.even
-        "X"
-      else
-        "O"
+    def piece
+      if @turn.even?
+        @piece = "X"
+      else @turn.odd?
+        @piece = "O"
       end
     end
 
-  def choose_column(letter)
-    number = (6)
-    chosen_column = player_move(letter)
-    row_column_chosen = piece_drop(chosen_column)
+
+  def choose_column
+    input = get_input
+    letter_valid = player_move(input)
+    row_column_chosen = piece_drop(letter_valid)
+  end
+
+  def get_input
+    gets.chomp
   end
 
   def player_move(move)
     if ("A".."G").include?(move.upcase)
-      # "\nThank You!"
       access_index(move.upcase)
     else
       "\nPlease choose one of the following letters ABCDEFG"
@@ -47,34 +47,16 @@ class Player
   end
 
   def piece_drop(column)
-  if @gameboard.board[6][column] == "."
-    @gameboard.board[6].delete_at(column)
-    @gameboard.board[6].insert(column, "X")
-
-  elsif @gameboard.board[5][column] == "."
-    @gameboard.board[5].delete_at(column)
-    @gameboard.board[5].insert(column, "X")
-
-  elsif @gameboard.board[4][column] == "."
-    @gameboard.board[4].delete_at(column)
-    @gameboard.board[4].insert(column, "X")
-
-  elsif @gameboard.board[3][column] == "."
-    @gameboard.board[3].delete_at(column)
-    @gameboard.board[3].insert(column, "X")
-
-  elsif @gameboard.board[2][column] == "."
-    @gameboard.board[2].delete_at(column)
-    @gameboard.board[2].insert(column, "X")
-
-  elsif @gameboard.board[1][column] == "."
-    @gameboard.board[1].delete_at(column)
-    @gameboard.board[1].insert(column, "X")
-
-  else
-    puts "Sorry, column full!"
+        rows = [6,5,4,3,2,1]
+        rows.map do |row|
+          if  @gameboard.board[row][column] == "."
+            @gameboard.board[row].delete_at(column)
+            @gameboard.board[row].insert(column, @piece)
+            break
+          end
+        end
+      return @gameboard.print_board
+    @turn +=1
   end
-  return @gameboard.print_board
-end
 
 end
