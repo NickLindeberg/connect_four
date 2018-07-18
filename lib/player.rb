@@ -4,8 +4,8 @@ class Player
   attr_reader :player_move,
               :piece_drop,
               :gameboard,
-              :choose_column,
-              :get_input
+              :choose_column
+
 
   def initialize
     @gameboard = Board.new
@@ -13,7 +13,7 @@ class Player
   end
 
   def get_input
-    gets.chomp
+    gets
   end
 
   # if turn is even?
@@ -50,12 +50,13 @@ class Player
         if  @gameboard.board[row][column] == "."
           @gameboard.board[row].delete_at(column)
           @gameboard.board[row].insert(column, "X")
-          break
-        elsif @gameboard.board[row][column] == "."
-          @gameboard.board[row -= 1].delete_at(column)
-          @gameboard.board[row -= 1].insert(column, "X")
+        elsif @gameboard.board[row -= 1][column] == "."
+          @gameboard.board[row].delete_at(column)
+          @gameboard.board[row].insert(column, "X")
         end
+        break
       end
+
     return @gameboard.print_board
   end
 
