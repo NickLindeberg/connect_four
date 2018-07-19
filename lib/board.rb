@@ -5,7 +5,8 @@ class Board
               :board_grid,
               :change_array_to_string,
               :seperate_into_lines,
-              :print_board
+              :print_board,
+              :flippedboard
 
   def initialize
     @board = [
@@ -25,15 +26,14 @@ class Board
                    "F" => 5,
                    "G" => 6
                  }
+    @flippedboard = board.board_flip
+
   end
-
-
   #Joins the arrays for each row into one string
   def change_array_to_string
     board.join
   end
 
-  #Takes string and seperates into seperate lines.
   def seperate_into_lines(string)
     string.scan(/......./).join("\n")
   end
@@ -43,6 +43,9 @@ class Board
     seperate_into_lines(changed_board)
   end
 
-  
-
+  def board_flip
+    sideways_board = board.transpose.join
+    seperate_into_lines(sideways_board)
+    
+  end
 end

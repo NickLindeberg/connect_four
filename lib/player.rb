@@ -7,7 +7,8 @@ class Player
               :gameboard,
               :choose_column,
               :get_input,
-              :piece
+              :piece,
+              :check_for_row_win
 
   def initialize
     @gameboard = Board.new
@@ -65,14 +66,30 @@ class Player
       return @gameboard.print_board
   end
 
+  def check_for_row_win()
+    rows = [6,5,4,3,2,1]
+      rows.map do |row|
+        if @gameboard.board[row].join.include?("XXXX")
+          puts "Winner! Winner! Chicken! Dinner!"
+        elsif @gameboard.board[row].join.include?("OOOO")
+          puts "The machine wins again!"
+        break
+        end
+      end
+    make_selection
+  end
 
-  def win_rows
-    if 
-
-    end
-
-
-
-
-
+  def check_for_column_win
+    rows = [7,6,5,4,3,2,1]
+      rows.map do |row|
+        if @gameboard.flippedboard[row].join.include?("XXXX")
+          puts "Winner! Winner! Chicken! Dinner!"
+        elsif @gameboard.flippedboard[row].join.include?("OOOO")
+          puts "The machine wins again"
+          break
+        end
+      end
+      make_selection
+  end
+    
 end
