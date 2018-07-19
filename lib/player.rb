@@ -1,14 +1,6 @@
-require 'pry'
 require './lib/computer_player.rb'
 
 class Player
-  attr_reader :player_move,
-              :piece_drop,
-              :gameboard,
-              :choose_column,
-              :get_input,
-              :piece,
-              :check_for_row_win
 
   def initialize
     @gameboard = Board.new
@@ -66,7 +58,7 @@ class Player
       return @gameboard.print_board
   end
 
-  def check_for_row_win()
+  def check_for_row_win
     rows = [6,5,4,3,2,1]
       rows.map do |row|
         if @gameboard.board[row].join.include?("XXXX")
@@ -82,14 +74,14 @@ class Player
   def check_for_column_win
     rows = [7,6,5,4,3,2,1]
       rows.map do |row|
-        if @gameboard.flippedboard[row].join.include?("XXXX")
+        if @gameboard.board_flip[row].join.include?("XXXX")
           puts "Winner! Winner! Chicken! Dinner!"
-        elsif @gameboard.flippedboard[row].join.include?("OOOO")
+        elsif @gameboard.board_flip[row].join.include?("OOOO")
           puts "The machine wins again"
           break
         end
       end
       make_selection
   end
-    
+
 end

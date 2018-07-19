@@ -3,7 +3,6 @@ require "minitest/pride"
 require "./lib/player.rb"
 require "./lib/board.rb"
 
-
 class PlayerTest <Minitest::Test
 
   def test_runner_exists
@@ -14,18 +13,13 @@ class PlayerTest <Minitest::Test
 
   def test_if_player_can_choose_column
     play = Player.new
-    expected = "\nThank You!"
-    actual = play.player_move("B")
+    expected_a = 0
+    expected_b = 1
+    actual_a = play.player_move("A")
+    actual_b = play.player_move("B")
 
-    assert_equal expected, actual
-  end
-
-  def test_if_method_will_upcase_input
-    play = Player.new
-    expected = "\nThank You!"
-    actual = play.player_move("a")
-
-    assert_equal expected, actual
+    assert_equal expected_a, actual_a
+    assert_equal expected_b, actual_b
   end
 
   def test_if_incorrect_input_rejected
@@ -46,27 +40,27 @@ class PlayerTest <Minitest::Test
     play = Player.new
 
     expected = "ABCDEFG\n.......\n.......\n.......\n.......\n.......\nX......"
-    assert_equal expected, play.piece_drop(6,0)
+    assert_equal expected, play.piece_drop(0)
   end
 
   def test_if_additional_piece_can_be_added_same_row
     play = Player.new
 
-    play.piece_drop(6,0)
+    play.piece_drop(0)
     expected = "ABCDEFG\n.......\n.......\n.......\n.......\n.......\nXX....."
-    assert_equal expected, play.piece_drop(6,1)
+    assert_equal expected, play.piece_drop(1)
   end
 
   def test_if_pieces_can_stack
     play = Player.new
 
-    play.piece_drop(6,0)
-    play.piece_drop(5,0)
-    play.piece_drop(4,0)
-    play.piece_drop(3,0)
-    play.piece_drop(2,0)
+    play.piece_drop(0)
+    play.piece_drop(0)
+    play.piece_drop(0)
+    play.piece_drop(0)
+    play.piece_drop(0)
     expected = "ABCDEFG\nX......\nX......\nX......\nX......\nX......\nX......"
-    assert_equal expected, play.piece_drop(1,0)
+    assert_equal expected, play.piece_drop(0)
   end
 
 end
