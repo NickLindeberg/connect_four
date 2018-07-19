@@ -10,7 +10,4 @@ class ConnectFourTest <Minitest::Test
     assert_instance_of ConnectFour, cf
   end
 
-  def 
-
-
 end
