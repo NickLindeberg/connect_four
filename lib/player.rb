@@ -41,8 +41,6 @@ class Player
     return row_column_chosen
   end
 
-
-
   def player_move(move)
     if ("A".."G").include?(move.upcase)
       access_index(move.upcase)
@@ -66,6 +64,14 @@ class Player
         end
       return @gameboard.print_board
   end
+
+
+  def win_rows
+    if 
+
+    end
+
+
 
 
 
