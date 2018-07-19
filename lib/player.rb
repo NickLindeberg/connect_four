@@ -1,4 +1,5 @@
 require 'pry'
+require './lib/computer_player.rb'
 
 class Player
   attr_reader :player_move,
@@ -11,18 +12,20 @@ class Player
   def initialize
     @gameboard = Board.new
     @turn = 0
-
-
+    @ai = ComputerPlayer.new
   end
 
-    def piece
-      if @turn.even?
-         "X"
-      else
-         "O"
-      end
+  def piece
+    if @turn.even?
+       "X"
+    else
+       "O"
     end
+  end
 
+  def get_input
+    gets.chomp
+  end
 
   def make_selection
     if @turn.even?
@@ -30,14 +33,15 @@ class Player
       letter_valid = player_move(input)
       row_column_chosen = piece_drop(letter_valid)
       @turn += 1
+    else @turn.odd?
+      input_comp = @ai.comp_selection
+      row_column_chosen = piece_drop(input_comp)
+      @turn += 1
+    end
     return row_column_chosen
-    else
-      @ai.comp_selection
   end
 
-  def get_input
-    gets.chomp
-  end
+
 
   def player_move(move)
     if ("A".."G").include?(move.upcase)
@@ -62,5 +66,7 @@ class Player
         end
       return @gameboard.print_board
   end
+
+
 
 end

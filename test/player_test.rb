@@ -3,6 +3,7 @@ require "minitest/pride"
 require "./lib/player.rb"
 require "./lib/board.rb"
 
+
 class PlayerTest <Minitest::Test
 
   def test_runner_exists

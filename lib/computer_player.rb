@@ -1,7 +1,7 @@
 class ComputerPlayer
 
   def comp_selection
-    rand(6..1)
+    rand(1..6)
   end
 
 end
