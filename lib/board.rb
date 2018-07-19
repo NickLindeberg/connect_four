@@ -43,4 +43,6 @@ class Board
     seperate_into_lines(changed_board)
   end
 
+  
+
 end
