@@ -1,12 +1,6 @@
-require "pry"
-
 class Board
   attr_reader :board,
-              :board_grid,
-              :change_array_to_string,
-              :seperate_into_lines,
-              :print_board,
-              :flippedboard
+              :board_grid
 
   def initialize
     @board = [
@@ -26,10 +20,8 @@ class Board
                    "F" => 5,
                    "G" => 6
                  }
-    @flippedboard = board.board_flip
-
   end
-  #Joins the arrays for each row into one string
+
   def change_array_to_string
     board.join
   end
@@ -46,6 +38,5 @@ class Board
   def board_flip
     sideways_board = board.transpose.join
     seperate_into_lines(sideways_board)
-    
   end
 end
